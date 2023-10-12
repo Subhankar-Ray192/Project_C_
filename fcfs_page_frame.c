@@ -33,9 +33,16 @@ void enque(int data)
 	display();
 	if(obj.frame_count < obj.max_frame_count)
 	{
-		printf("M");
-		obj.queue[obj.frame_count] = data;
-		obj.frame_count = obj.frame_count + 1;
+		if(!isHit(data))
+		{
+			printf("M");
+			obj.queue[obj.frame_count] = data;
+			obj.frame_count = obj.frame_count + 1;
+		}
+		else
+		{
+			printf("H");
+		}
 	}
 	else
 	{
