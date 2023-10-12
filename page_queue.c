@@ -71,7 +71,7 @@ int isHit(int data)
 void main()
 {
 	printf("\nEnter Reference String:");
-	for(int i =0 ; i< 8; i++)
+	for(int i =0 ; i< 5; i++)
 	{
 		scanf("%d",&ref_string[i]);
 		//printf("%d",ref_string[i]);
