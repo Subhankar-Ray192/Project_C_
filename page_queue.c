@@ -70,8 +70,12 @@ int isHit(int data)
 
 void main()
 {
+	int ref_string_len = 0;
+	printf("\nEnter Length:");
+	scanf("%d",&ref_string_len);
+
 	printf("\nEnter Reference String:");
-	for(int i =0 ; i< 5; i++)
+	for(int i =0 ; i< ref_string_len; i++)
 	{
 		scanf("%d",&ref_string[i]);
 		//printf("%d",ref_string[i]);
