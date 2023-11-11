@@ -173,31 +173,3 @@ void display(struct data *head)
   printf("%d.\n\n",iterator->x);
 }
 
-void main()
-{
-  struct data *list=(struct data *)malloc(sizeof(struct data));
-
-  insertH(list,5);
-  display(list);
-  insertH(list,-2);
-  display(list);
-  insertT(list,18);
-  display(list);
-  insertT(list,-31);
-  display(list);
-  insertB(list,18,7);
-  display(list);
-  insertB(list,7,4);
-  display(list);
-  insertA(list,7,-7);
-  display(list);
-  printf("%d",delH(list));
-  display(list);
-  printf("%d",delT(list));
-  display(list);
-  printf("%d",delA(list,7));
-  display(list);
-  printf("%d",delB(list,7));
-  display(list);
-}
-
