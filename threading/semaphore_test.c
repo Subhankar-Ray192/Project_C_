@@ -29,8 +29,8 @@ void *exe_thread(void *args)
 	sem_wait(&obj.S);
 	shared_res++;
 	printf("Message:%s\n",(char *)args);
-	pthread_exit("Finished");
 	sem_post(&obj.S);
+	pthread_exit("Finished");
 }
 
 void main_thread()
@@ -39,10 +39,11 @@ void main_thread()
 	struct thread obj2;
 
 	pthread_create(&obj1.T,NULL,exe_thread,(void *)msg);
+	pthread_create(&obj2.T,NULL,exe_thread,(void *)msg);
+
 	pthread_join(obj1.T,&stat);
 	printf("Status:%s\n",(char *)stat);
-
-	pthread_create(&obj2.T,NULL,exe_thread,(void *)msg);
+	
 	pthread_join(obj2.T,&stat);
 	printf("Status:%s\n",(char *)stat);
 	
@@ -51,6 +52,6 @@ void main_thread()
 
 void main()
 {
-	sem_init(&obj.S,0,2);
+	sem_init(&obj.S,0,1);
 	main_thread();
 }
