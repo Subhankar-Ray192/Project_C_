@@ -13,7 +13,6 @@ struct semaphore
 struct thread
 {
 	pthread_t T;
-	pthread_t ID;
 };
 
 void * stat;
@@ -41,16 +40,14 @@ void main_thread()
 	struct thread obj2;
 
 	pthread_create(&obj1.T,NULL,exe_thread,(void *)msg);
-	obj1.ID=pthread_self();
 	
 	pthread_create(&obj2.T,NULL,exe_thread,(void *)msg);
-	obj2.ID=pthread_self();
 
 	pthread_join(obj1.T,&stat);
-	printf("%d-Status:%s\n",obj1.ID,(char *)stat);
+	printf("Thread(%d)-Status:%s\n",obj1.T,(char *)stat);
 	
 	pthread_join(obj2.T,&stat);
-	printf("%d-Status:%s\n",obj2.ID,(char *)stat);
+	printf("Thread(%d)-Status:%s\n",obj2.T,(char *)stat);
 	
 	printf("Shared-Resouce:%d\n",shared_res);
 }
