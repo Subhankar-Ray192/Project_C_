@@ -11,6 +11,7 @@ char msg[] = "Hello World!";
 struct thred
 {
 	pthread_t T;
+	pthread_t ID;
 };
 
 struct thred obj;
@@ -18,7 +19,8 @@ void *stat;
 
 void *exec_thread(void *args)
 {
-	printf("Child-Thread-Start\n");
+	obj.ID=pthread_self();
+	printf("Child-Thread-Start:%d\n",obj.ID);
 	printf("Message:%s\n",(char *)args);
 	sleep(5);
 	strcpy(msg,"Bye");
