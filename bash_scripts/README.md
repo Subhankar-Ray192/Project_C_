@@ -15,3 +15,5 @@ This command helps to delete all the details from my /etc/passwd file and also d
 
 ```rm -rf (username)```<br>
 [Note: when using userdel (-r) flag is neccesary and without which, we may need to remove the /home/(username)]<br>
+
+# GROUPS:
