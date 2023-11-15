@@ -13,6 +13,5 @@ This command help to add a new username to my system with privileges less than o
 ```sudo userdel -r (username)```<br>
 This command helps to delete all the details from my /etc/passwd file and also deletes the directory from /home
 
-[Note: when using userdel (-r) flag is neccesary and without which, we may need to remove the /home/(username)<br>
-```rm -rf (username)```]
-
+```rm -rf (username)```<br>
+[Note: when using userdel (-r) flag is neccesary and without which, we may need to remove the /home/(username)]<br>
