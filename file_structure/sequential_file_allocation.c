@@ -54,10 +54,11 @@ void writeToFile(struct SequentialFile *file,const char *data)
 
 void readFromFile(struct SequentialFile *file)
 {
-	printf("\n");
+	printf("\nBLOCK-START-ADDRESS|FILE-NAME\n");
+	printf("-------------------------------------------------------\n");
 	for(int i = 0; i<file->allocatedBlocks;i++)
 	{
-		printf("%d\n",file->blockAddresses[i]);
+		printf("\t%d\t   |\t",file->blockAddresses[i]);
 		printf("%s\n",file->blocks[i].data);
 	}
 }
