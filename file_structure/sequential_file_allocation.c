@@ -43,10 +43,9 @@ void writeToFile(struct SequentialFile *file,const char *data)
 		
 		strncpy(file->blocks[blockIndex].data,data + (dataSize - remaining),copySize);
 		
-		scanf("%d",&file->blockAddresses[blockIndex]);
-		
 		file->blockAddresses[blockIndex] = blockIndex;
 		remaining -= copySize;
+		
 		blockIndex++;
 	}
 	
@@ -58,7 +57,7 @@ void readFromFile(struct SequentialFile *file)
 	printf("\n");
 	for(int i = 0; i<file->allocatedBlocks;i++)
 	{
-		printf("%d\n",&file->blockAddresses[i]);
+		printf("%d\n",file->blockAddresses[i]);
 		printf("%s\n",file->blocks[i].data);
 	}
 }
