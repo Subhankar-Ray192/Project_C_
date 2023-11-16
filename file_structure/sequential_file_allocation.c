@@ -14,6 +14,7 @@ struct SequentialFile
 {
 	struct FileBlock blocks[MAX_BLOCKS];
 	int allocatedBlocks;
+	int blockAddresses[MAX_BLOCKS];
 };
 
 void initialiseFile(struct SequentialFile *);
@@ -25,6 +26,7 @@ void initialiseFile(struct SequentialFile *file)
 	file->allocatedBlocks = 0;
 	for(int i = 0; i< MAX_BLOCKS;i++)
 	{
+		file->blockAddresses[i] = -1;
 		memset(file->blocks[i].data, 0, sizeof(file->blocks[i].data));
 	}
 }
@@ -38,7 +40,12 @@ void writeToFile(struct SequentialFile *file,const char *data)
 	while(remaining > 0 && blockIndex < MAX_BLOCKS)
 	{
 		int copySize = remaining < BLOCK_SIZE ? remaining: BLOCK_SIZE;
+		
 		strncpy(file->blocks[blockIndex].data,data + (dataSize - remaining),copySize);
+		
+		scanf("%d",&file->blockAddresses[blockIndex]);
+		
+		file->blockAddresses[blockIndex] = blockIndex;
 		remaining -= copySize;
 		blockIndex++;
 	}
@@ -48,9 +55,10 @@ void writeToFile(struct SequentialFile *file,const char *data)
 
 void readFromFile(struct SequentialFile *file)
 {
+	printf("\n");
 	for(int i = 0; i<file->allocatedBlocks;i++)
 	{
-		printf("%d\n",&file->blocks[i]);
+		printf("%d\n",&file->blockAddresses[i]);
 		printf("%s\n",file->blocks[i].data);
 	}
 }
