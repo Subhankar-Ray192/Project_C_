@@ -14,6 +14,22 @@ This command help to add a new username to my system with privileges less than o
 This command helps to delete all the details from my /etc/passwd file and also deletes the directory from /home
 
 ```rm -rf (username)```<br>
-[Note: when using userdel (-r) flag is neccesary and without which, we may need to remove the /home/(username)]<br>
+[Note: when using userdel (-r) flag is neccesary and without which, we may need to remove the /home/(username) manually]<br>
 
 # GROUPS:
+
+# SUDOER FILE:
+```sudo visudo``` <br>
+This command opens the SUDOER-EDITOR in which we can add all the specific access groups along with commands which they can perform
+
+# ORGANISATIONAL STRUCTURE
+```root``` <br>
+There can be only one root on the system itself and the password of the root will be strictly guarded against any brute-force attack<br>
+[Note: use of su to switch user to root terminal must be limited]<br>
+
+```admin```<br>
+There can be many admin in the system, however only one single root can be allowed to create the admins in the system. They enjoy mild sudo privileges which are neccesary for their jobs.
+
+```user```<br>
+There can be many users in the system, who can be created by both the root and the admin and have the most limited functionality as the sudo privileges are concerned.
+ 
