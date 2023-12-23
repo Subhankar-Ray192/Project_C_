@@ -22,6 +22,13 @@ This command helps to delete all the details from my /etc/passwd file and also d
 ```sudo visudo``` <br>
 This command opens the SUDOER-EDITOR in which we can add all the specific access groups along with commands which they can perform
 
+```sudo usermod -a -G (group) (username)```<br>
+This commands ensure that the user is added to the specific access group in the SUDOERS-FILE
+
+```sudo deluser (username) (group)```<br>
+This command removes the user from a specific access group in the SUDOERS-FILE<br>
+[Note: this command is specific to Ubuntu systems only]
+
 # ORGANISATIONAL STRUCTURE
 ```root``` <br>
 There can be only one root on the system itself and the password of the root will be strictly guarded against any brute-force attack<br>
