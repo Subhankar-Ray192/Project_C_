@@ -54,9 +54,3 @@ Cmnd_Alias ADMIN_CMDS = /usr/sbin/useradd, /usr/sbin/adduser, /usr/sbin/usermod,
 Cmnd_Alias CONFIGURATION_CMDS = /usr/bin/git, /usr/bin/docker, /usr/bin/kubectl, /usr/bin/ansible, /usr/bin/terraform, /bin/systemctl
 Cmnd_Alias ADDITIONAL_TOOLS_CMDS = /bin/netstat, /usr/sbin/tcpdump, /usr/sbin/iptraf, /usr/bin/nmap, /usr/bin/rsync, /usr/bin/scp
 Cmnd_Alias HARDWARE_CMDS = /bin/mount, /sbin/mount.*, /bin/umount, /sbin/umount.*
-
-# SUDOER-USER-ALIAS
-
-User_Alias USER 
-User_Alias ADMIN
-USER_ALIAS ROOT
