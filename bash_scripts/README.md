@@ -42,15 +42,21 @@ There can be many users in the system, who can be created by both the root and t
  
 # SUDOER-COMMAND-ALIASES:
 
-Cmnd_Alias 1_BASIC_CMDS = /bin/ls, /bin/cd, /bin/pwd, /bin/mkdir, /bin/rm, /bin/cp, /bin/mv, /usr/bin/touch
-Cmnd_Alias 1_NETWORK_CMDS = /sbin/ifconfig, /bin/ping, /usr/bin/ssh, /usr/bin/wget, /usr/bin/curl
-Cmnd_Alias 1_EDITOR_CMDS = /bin/nano, /bin/vi
-Cmnd_Alias 1_TOOLS_CMDS = /bin/grep, /usr/bin/awk, /usr/bin/sed, /usr/bin/find
-Cmnd_Alias 1_MISC_CMDS = /usr/bin/screen, /usr/bin/tmux, /usr/bin/zip, /usr/bin/unzip
+Cmnd_Alias BASIC_CMDS = /bin/ls, /bin/cd, /bin/pwd, /bin/mkdir, /bin/rm, /bin/cp, /bin/mv, /usr/bin/touch
+Cmnd_Alias NETWORK_CMDS = /sbin/ifconfig, /bin/ping, /usr/bin/ssh, /usr/bin/wget, /usr/bin/curl
+Cmnd_Alias EDITOR_CMDS = /bin/nano, /bin/vi
+Cmnd_Alias TOOLS_CMDS = /bin/grep, /usr/bin/awk, /usr/bin/sed, /usr/bin/find
+Cmnd_Alias MISC_CMDS = /usr/bin/screen, /usr/bin/tmux, /usr/bin/zip, /usr/bin/unzip
 
-Cmnd_Alias 2_SYSTEM_CMDS = /usr/bin/sudo, /usr/bin/apt-get, /usr/bin/apt, /bin/systemctl, /usr/bin/top, /usr/bin/htop, /bin/df
-Cmnd_Alias 2_FIREWALL_CMDS = /usr/sbin/ufw, /sbin/iptables, /usr/sbin/firewalld
-Cmnd_Alias 2_ADMIN_CMDS = /usr/sbin/useradd, /usr/sbin/adduser, /usr/sbin/usermod, /usr/sbin/userdel, /bin/chown, /bin/chmod, /etc/sudoers, /etc/cron.d
-Cmnd_Alias 2_CONFIGURATION_CMDS = /usr/bin/git, /usr/bin/docker, /usr/bin/kubectl, /usr/bin/ansible, /usr/bin/terraform, /bin/systemctl
-Cmnd_Alias 2_ADDITIONAL_TOOLS_CMDS = /bin/netstat, /usr/sbin/tcpdump, /usr/sbin/iptraf, /usr/bin/nmap, /usr/bin/rsync, /usr/bin/scp
-Cmnd_Alias 2_HARDWARE_CMDS = /bin/mount, /sbin/mount.*, /bin/umount, /sbin/umount.*
+Cmnd_Alias SYSTEM_CMDS = /usr/bin/sudo, /usr/bin/apt-get, /usr/bin/apt, /bin/systemctl, /usr/bin/top, /usr/bin/htop, /bin/df
+Cmnd_Alias FIREWALL_CMDS = /usr/sbin/ufw, /sbin/iptables, /usr/sbin/firewalld
+Cmnd_Alias ADMIN_CMDS = /usr/sbin/useradd, /usr/sbin/adduser, /usr/sbin/usermod, /usr/sbin/userdel, /bin/chown, /bin/chmod, /etc/sudoers, /etc/cron.d
+Cmnd_Alias CONFIGURATION_CMDS = /usr/bin/git, /usr/bin/docker, /usr/bin/kubectl, /usr/bin/ansible, /usr/bin/terraform, /bin/systemctl
+Cmnd_Alias ADDITIONAL_TOOLS_CMDS = /bin/netstat, /usr/sbin/tcpdump, /usr/sbin/iptraf, /usr/bin/nmap, /usr/bin/rsync, /usr/bin/scp
+Cmnd_Alias HARDWARE_CMDS = /bin/mount, /sbin/mount.*, /bin/umount, /sbin/umount.*
+
+# SUDOER-USER-ALIAS
+
+User_Alias USER 
+User_Alias ADMIN
+USER_ALIAS ROOT
