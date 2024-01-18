@@ -1,42 +1,50 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct data
+typedef struct LinkedList
 {
   int x;
-  struct data *next;
-};
+  struct LinkedList *next;
+}List;
 
-struct data *null = (void *)0;
+List *null = (void *)0;
 
-void insertH(struct data *,int);
-void insertT(struct data *,int);
-void insertB(struct data *,int,int);
-void insertA(struct data *,int,int);
+List* mem_allocate();
 
-int delH(struct data *);
-int delT(struct data *);
-int delB(struct data *,int);
-int delA(struct data *,int);
+void insertH(List *,int);
+void insertT(List *,int);
+void insertB(List *,int,int);
+void insertA(List *,int,int);
 
-void display(struct data *);
+int delH(List *);
+int delT(List *);
+int delB(List *,int);
+int delA(List *,int);
 
-void insertH(struct data *head,int item)
+void display(List *);
+int peekList(List *);
+
+List * mem_allocate()
 {
-  struct data *ptr =(struct data *)malloc(sizeof(struct data));
+   return (List *)malloc(sizeof(List));
+}
+
+void insertH(List *head,int item)
+{
+  List *ptr =mem_allocate();
 
   ptr->x = item;
   ptr->next = head->next;
   head->next = ptr;
 }
 
-void insertT(struct data *head,int item)
+void insertT(List *head,int item)
 {
-  struct data *ptr =(struct data *)malloc(sizeof(struct data));
+  List *ptr =mem_allocate();
   ptr->x = item;
   ptr->next = null;
 
-  struct data *copy =head;
+  List *copy =head;
   while(copy->next!=null)
   {
      copy =copy->next;
@@ -44,13 +52,13 @@ void insertT(struct data *head,int item)
   copy->next =ptr;
 }
 
-void insertB(struct data *head,int locator,int item)
+void insertB(List *head,int locator,int item)
 {
-  struct data *ptr =(struct data *)malloc(sizeof(struct data));
+  List *ptr =mem_allocate();
   ptr->x = item;
 
-  struct data *iterator =head;
-  struct data *copy =head;
+  List *iterator =head;
+  List *copy =head;
   while((iterator->next!=null)&&(iterator->x!=locator))
   {
     copy=iterator;
@@ -60,12 +68,12 @@ void insertB(struct data *head,int locator,int item)
   copy->next = ptr;
 }
 
-void insertA(struct data *head,int locator,int item)
+void insertA(List *head,int locator,int item)
 {
-  struct data *ptr=(struct data *)malloc(sizeof(struct data));
+  List *ptr=mem_allocate();
   ptr->x=item;
 
-  struct data *iterator=head;
+  List *iterator=head;
   while((iterator->next!=null)&&(iterator->x!=locator))
   {
     iterator=iterator->next;
@@ -74,21 +82,21 @@ void insertA(struct data *head,int locator,int item)
   iterator->next=ptr;
 }
 
-int delH(struct data *head)
+int delH(List *head)
 {
   if(head->next==null)
   {
     return -1;
   }
 
-  struct data *copy=head->next;
+  List *copy=head->next;
   head->next=copy->next;
   int item=copy->x;
   free(copy);
   return item;
 }
 
-int delT(struct data *head)
+int delT(List *head)
 {
 
    if(head->next==null)
@@ -96,8 +104,8 @@ int delT(struct data *head)
       return -1;
    }
 
-   struct data *copy=head;
-   struct data *iterator=head;
+   List *copy=head;
+   List *iterator=head;
 
    while(iterator->next!=null)
    {
@@ -111,20 +119,20 @@ int delT(struct data *head)
    return item;
 }
 
-int delA(struct data *head, int locator)
+int delA(List *head, int locator)
 {
    if(head->next==null)
    {
       return -1;
    }
 
-   struct data *copy=head;
+   List *copy=head;
    
    while((copy->next!=null)&&(copy->x!=locator))
    {
       copy=copy->next;
    }
-   struct data *free_node=copy->next;
+   List *free_node=copy->next;
    copy->next=free_node->next;
    int item=free_node->x;
    free(free_node);
@@ -132,7 +140,7 @@ int delA(struct data *head, int locator)
    
 }
 
-int delB(struct data *head, int locator)
+int delB(List *head, int locator)
 {
    if(head->next==null)
    {
@@ -144,9 +152,9 @@ int delB(struct data *head, int locator)
      return -1;
    }
    
-   struct data *copy=head;
-   struct data *free_node=head;
-   struct data *iterator=head;
+   List *copy=head;
+   List *free_node=head;
+   List *iterator=head;
 
    while((iterator->next!=null)&&(iterator->x!=locator))
    {
@@ -161,10 +169,10 @@ int delB(struct data *head, int locator)
    return item;
 }
 
-void display(struct data *head)
+void display(List *head)
 {
   printf("\nElements:");
-  struct data *iterator = head->next;
+  List *iterator = head->next;
   while(iterator->next!=null)
   {
      printf("%d,",iterator->x);
@@ -173,3 +181,7 @@ void display(struct data *head)
   printf("%d.\n\n",iterator->x);
 }
 
+int peekList(List *head)
+{
+   return (head->next->x);
+}
